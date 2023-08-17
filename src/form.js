@@ -23,7 +23,7 @@ const FileUploadForm = () => {
       var fd = new FormData();
       fd.append('file', res, selectedFile.name);
 
-      const response = await fetch(`${url}/upload`, {method:"POST", body: fd})
+      const response = await fetch(`/upload`, {method:"POST", body: fd})
       setStatus(response.status)
     } else {
       alert('Please select a file before uploading.');
@@ -36,7 +36,7 @@ const FileUploadForm = () => {
       <input type="file" name='file' onChange={handleFileChange} />
       <button onClick={handleFileUpload}>compress</button>
       {
-        status === 200 ? <div><p>original: {selectedFile.size}B</p><br /><p>compressed: {compressed.size}B</p><br/><a href={`${url}/get/${selectedFile.name}-compressed.jpg`}>download</a></div> : null
+        status === 200 ? <div><p>original: {selectedFile.size}B</p><br /><p>compressed: {compressed.size}B</p><br/><a href={`/get/${selectedFile.name}-compressed.jpg`}>download</a></div> : null
       }
     </div>
   );
